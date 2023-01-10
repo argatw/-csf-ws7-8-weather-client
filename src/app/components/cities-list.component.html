@@ -1,0 +1,29 @@
+<p>cities-list!</p>
+
+<div class="box-it">
+    <form [formGroup]="cityForm" (ngSubmit)="processForm()">
+        <table>
+            <tr>
+                <td>City:</td>
+                <td>
+                    <input type="text" size="30" formControlName="city">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">
+                        Submit!
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<ul>
+    <li *ngFor="let c of cities">
+        <a [routerLink]="['/weather', c.city]">
+            {{ c.city }}
+        </a>
+    </li>
+</ul>
