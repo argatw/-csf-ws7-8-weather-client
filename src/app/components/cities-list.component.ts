@@ -36,7 +36,7 @@ export class CitiesListComponent implements OnInit {
   }
 
   processForm() {
-    const city = this.cityForm.value as Weather
+    const city = this.cityForm.value
     console.info("ProcessForm() register:: ",city)
     this.wSvc.addCity(city)
       .then(result => {

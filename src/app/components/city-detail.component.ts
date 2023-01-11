@@ -23,7 +23,7 @@ export class CityDetailComponent implements OnInit {
     this.title.setTitle(`City: ${this.cityName}`)
     this.wSvc.getCityWeatherByName(this.cityName)
       .then(result => {
-        console.info('book:: ',result)
+        console.info('weather:: ',result)
         this.weather = result
       })
       .catch(error => {

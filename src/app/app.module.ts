@@ -7,6 +7,13 @@ import { AppComponent } from './app.component';
 import { CitiesListComponent } from './components/cities-list.component';
 import { CityDetailComponent } from './components/city-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { WeatherService } from './services/weather.service';
+
+const routes: Routes = [
+    { path: '', component: CitiesListComponent }, 
+    { path: 'weather/:city', component: CityDetailComponent}
+  ];
 
 @NgModule({
   declarations: [
@@ -16,11 +23,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [WeatherService],
+  bootstrap: [AppComponent, HttpClientModule]
 })
 export class AppModule { }

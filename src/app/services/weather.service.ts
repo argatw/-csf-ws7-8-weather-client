@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { firstValueFrom } from "rxjs";
 import { Weather } from "../models";
@@ -11,7 +11,7 @@ export class WeatherService {
 
     getCityWeatherByName(city: string): Promise<Weather> {
         return firstValueFrom(
-          this.http.get<Weather>(`/weather/${city}`)
+          this.http.get<Weather>(`weather/${city}`)
         )
       }
 
@@ -21,8 +21,15 @@ export class WeatherService {
             )
     }
 
-    addCity(cities: Weather) {
-        return firstValueFrom(this.http.post<any>('/addcity', cities))
+    addCity(city: string) {
+
+        const headers = new HttpHeaders()
+          .set('Content-Type', 'application/json')
+          .set('Accept', 'application/json')
+
+        
+
+        return firstValueFrom(this.http.post<any>('weather/addcity', city, { headers }))
     }
 
     removeCity(cities: Weather) {

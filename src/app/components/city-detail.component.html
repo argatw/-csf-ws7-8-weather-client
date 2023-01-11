@@ -2,13 +2,18 @@
 
 <button type="button" [routerLink]="['/']">Back to List</button>
 
-<h3>{{ weather.city }}</h3>
-<table>
+<span *ngIf="weather">
+    <h3>{{ weather.city }}</h3>
+    <h4>{{ weather.conditions }}</h4>
+</span>
+
+<!-- <h4></h4> -->
+<!-- <table>
     <tr>
         <td>{{ weather.id }}</td>
     </tr>
     <tr>
         <td>{{ weather.description }}</td>
     </tr>
-</table>
+</table> -->
 
